@@ -1,11 +1,16 @@
 <template>
-<!--  <nav>-->
-<!--    <router-link to="/">Home</router-link> |-->
-<!--    <router-link to="/about">About</router-link>-->
-<!--  </nav>-->
-<!--  <router-view/>-->
+    <main-wrapper/>
 </template>
 
-<style lang="scss">
+<script>
+    import MainWrapper from "@/components/MainWrapper";
+    export default {
+        name: 'App',
+        components:{MainWrapper}
+
+    }
+</script>
+
+<style scoped>
 
 </style>

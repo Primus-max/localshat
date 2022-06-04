@@ -1,4 +1,16 @@
 # localchat
+```
+Application for learning composition API
+```
+
+##Stack
+```
+Vue 3
+Electron
+Pinia
+axios
+json server
+```
 
 ## Project setup
 ```

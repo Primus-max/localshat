@@ -4,6 +4,7 @@ import router from './router'
 import {createPinia} from 'pinia'
 
 import '@/assets/styles/styles.scss'
+import 'material-design-icons-iconfont'
 
 const app = createApp(App)
 
