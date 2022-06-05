@@ -6,11 +6,15 @@
 
 <script>
     import ContactUser from "@/components/contacts/ContactUser";
+    import {useContacts} from "@/use/contacts";
 
     export default {
         name: 'ContactList',
-        components: {ContactUser}
-
+        components: {ContactUser},
+        async setup() {
+            const {contacts} = await useContacts()
+            console.log('from contactList',contacts.value)
+        }
     }
 </script>
 
