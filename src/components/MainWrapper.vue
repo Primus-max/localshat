@@ -1,7 +1,9 @@
 <template>
     <div class="v-main-wrapper">
         <main-header />
+        <Suspense>
         <router-view></router-view>
+        </Suspense>
         <bottom-nav />
     </div>
 </template>

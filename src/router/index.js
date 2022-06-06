@@ -9,7 +9,12 @@ const routes = [
     path: '/',
     name: 'contacts',
     component: ContactList
-  }
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactUser
+  },
 ]
 
 const router = createRouter({

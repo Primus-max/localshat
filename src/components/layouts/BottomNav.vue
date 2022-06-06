@@ -1,6 +1,6 @@
 <template>
     <div class="v-bottom-nav">
-        <router-link :to="{name: 'contacts'}">
+        <router-link :to="{name: 'contacts', path: '/contact'}">
             <i class="material-icons">person_pin</i>
         </router-link>
         <router-link :to="{name: 'contacts'}">
