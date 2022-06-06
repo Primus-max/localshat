@@ -5,7 +5,7 @@
             <span>Back</span>
         </div>
         <div class="v-header__user-info">
-            <span>Tom</span>
+            <span>{{ nameHeader }}</span>
         </div>
         <div class="right-side"></div>
     </div>
@@ -13,15 +13,20 @@
 
 <script>
     import router from "@/router";
+    import {useSetContactInfo} from '@/use/setContactInfo'
 
     export default {
         name: 'Header',
         setup() {
+            const {nameHeader} = useSetContactInfo()
+
+            console.log(nameHeader)
+
             const goBack = () => {
                 router.go(-1)
             }
 
-            return {goBack}
+            return {goBack, nameHeader}
         }
 
     }

@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ContactList from "@/components/contacts/ContactList";
 import ContactUser from "@/components/contacts/ContactUser";
-import {useContacts} from "@/use/contacts";
+import ContactUserInfo from "@/components/contacts/ContactUserInfo";
+
 
 
 const routes = [
@@ -13,7 +14,7 @@ const routes = [
   {
     path: '/contact',
     name: 'contact',
-    component: ContactUser
+    component: ContactUserInfo
   },
 ]
 
