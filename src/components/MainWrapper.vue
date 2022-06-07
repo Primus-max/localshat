@@ -1,6 +1,8 @@
 <template>
     <div class="v-main-wrapper">
+        <Suspense>
         <main-header />
+        </Suspense>
         <Suspense>
         <router-view></router-view>
         </Suspense>

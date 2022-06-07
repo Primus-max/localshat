@@ -14,7 +14,7 @@
 <script>
     import ContactUser from "@/components/contacts/ContactUser";
     import {useContacts} from "@/use/contacts";
-    import {useSetContactInfo} from '@/use/setContactInfo'
+    //import {useSetContactInfo} from '@/use/setContactInfo'
 
     import {useRouter, useRoute} from 'vue-router';
 
@@ -23,7 +23,7 @@
         components: {ContactUser},
         async setup() {
             const router = useRouter()
-            // const {setNameHeader} = useSetContactInfo()
+
             // const route = useRoute()
 
             const {contacts} = await useContacts()
@@ -34,7 +34,7 @@
                     query: {'id': contact.id}
                 })
                 // Вызываю функцию из 'use' и передаю параметр contact для вставки имени в header
-                useSetContactInfo(contact)
+                // setNameHeader(contact)
             }
 
             // console.log(contact)

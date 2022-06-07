@@ -1,12 +1,21 @@
-import {ref, reactive} from 'vue'
+import {ref, watch} from "vue";
+import {useContacts} from "@/use/contacts";
+import {useRoute} from "vue-router";
 
-export async function useSetContactInfo(contact) {
-     let nameHeader = await contact?.name
+
+export async function useSetContactInfo() {
+    const nameHeader = ref('')
+    const route = useRoute()
+    const {contacts} = await useContacts()
 
 
-    console.log('это то-что надо', nameHeader)
-
+    watch(route,  () => {
+         contacts.value.find(contact => {
+            if (+route.query.id === contact.id) {
+                nameHeader.value = contact.name
+            }
+        })
+    })
 
     return {nameHeader}
-
 }

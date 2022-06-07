@@ -12,18 +12,18 @@
 </template>
 
 <script>
-    import router from "@/router";
-    import {useSetContactInfo} from '@/use/setContactInfo'
+    import {useRouter} from 'vue-router';
+    import {useSetContactInfo} from '@/use/setContactInfo';
 
     export default {
         name: 'Header',
-        setup() {
-            const {nameHeader} = useSetContactInfo()
-
-            console.log(nameHeader)
+        async setup() {
+            const router = useRouter()
+            const {nameHeader} = await useSetContactInfo()
 
             const goBack = () => {
                 router.go(-1)
+                nameHeader.value = ''
             }
 
             return {goBack, nameHeader}
