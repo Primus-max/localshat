@@ -1,43 +1,41 @@
 <template>
     <div class="v-contact-list">
 
-            <contact-user
-                    v-for="contact in contacts"
-                    :key="contact.id"
-                    :contact="contact"
-                    @to-contact-info="toContactInfo(contact)"
-            />
+        <contact-user
+                v-for="contact in contacts"
+                :key="contact.id"
+                :contact="contact"
+                @to-contact-info="toContactInfo(contact)"
+        />
 
     </div>
 </template>
 
 <script>
     import ContactUser from "@/components/contacts/ContactUser";
-    import {useContacts} from "@/use/contacts";
-    //import {useSetContactInfo} from '@/use/setContactInfo'
 
-    import {useRouter, useRoute} from 'vue-router';
+    import {useRouter} from 'vue-router';
+    import {useContactsStore} from '@/store/contacts';
+    import {storeToRefs} from "pinia";
 
     export default {
         name: 'ContactList',
         components: {ContactUser},
-        async setup() {
+        setup() {
             const router = useRouter()
+            const {contacts} = storeToRefs(useContactsStore())
+            const {fetchContacts} = useContactsStore()
 
-            // const route = useRoute()
-
-            const {contacts} = await useContacts()
 
             const toContactInfo = (contact) => {
                 router.push({
                     name: 'contact',
                     query: {'id': contact.id}
                 })
-                // Вызываю функцию из 'use' и передаю параметр contact для вставки имени в header
-                // setNameHeader(contact)
             }
 
-            // console.log(contact)
+            // Загружаю список контактов с сервера
+            fetchContacts()
             return {contacts, toContactInfo}
         }
     }

@@ -17,9 +17,9 @@ json server
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles, hot-reloads + electron serve and json server for development
 ```
-npm run serve
+npm run start
 ```
 
 ### Compiles and minifies for production
