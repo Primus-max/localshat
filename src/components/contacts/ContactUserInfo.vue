@@ -14,10 +14,8 @@
 </template>
 
 <script>
-    // import {useSetContactInfo} from '@/use/setContactInfo'
     import {useContactsStore} from '@/store/contacts'
-    import {useRouter, useRoute} from 'vue-router';
-    import {ref, watch} from "vue";
+    import {ref} from "vue";
     import {storeToRefs} from "pinia";
 
     export default {

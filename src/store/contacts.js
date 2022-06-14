@@ -8,20 +8,7 @@ import {reactive, ref, watch} from 'vue'
 export const useContactsStore = defineStore('contacts', ()=>{
     const contacts = ref([])
     const currentContact = ref('')
-    const nameHeader = ref('')
-    const phoneContact = ref('')
     const route = useRoute()
-
-    watch(route, ()=>{
-        contacts.value.find(contact => {
-            if(contact.id === +route.query.id){
-                currentContact.value = contact
-                phoneContact.value = contact
-                // console.log(currentContact.value.name)
-                // console.log(currentContact.value.phone)
-            }
-        })
-    })
 
     // Получаю контакты с сервера
     async function  fetchContacts   () {
@@ -32,6 +19,17 @@ export const useContactsStore = defineStore('contacts', ()=>{
             console.log('Произошда ошибка', e)
         }
     }
+
+    // Определяю текущего(нажатого)пользователя
+    watch(route, ()=>{
+        contacts.value.find(contact => {
+            if(contact.id === +route.query.id){
+                currentContact.value = contact
+            }
+        })
+    })
+
+
 return{contacts, fetchContacts, currentContact}
 
 

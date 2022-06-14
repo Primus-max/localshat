@@ -26,7 +26,6 @@
             const store = useContactsStore()
             const {contacts} = storeToRefs(store)
             const {fetchContacts} = useContactsStore()
-            const {setContactInfo} = useContactsStore()
 
 
             const toContactInfo = (contact) => {
@@ -34,11 +33,11 @@
                     name: 'contact',
                     query: {'id': contact.id}
                 })
-                // setContactInfo(contact)
             }
 
             // Загружаю список контактов с сервера
             fetchContacts()
+
             return {contacts, toContactInfo}
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="v-header">
-        <div class="v-header__back" @click="goBack">
+        <div v-if="nameHeader" class="v-header__back" @click="goBack">
             <i class="material-icons">keyboard_arrow_left</i>
             <span>Back</span>
         </div>
