@@ -5,29 +5,31 @@
             <span>Back</span>
         </div>
         <div class="v-header__user-info">
-            <span>{{ nameHeader }}</span>
+            <span>{{ nameHeader.name }}</span>
         </div>
         <div class="right-side"></div>
     </div>
 </template>
 
 <script>
-    import {ref} from 'vue'
+    import {ref, watch, computed} from 'vue'
     import {useRouter, useRoute} from 'vue-router'
     import {useContactsStore} from '@/store/contacts'
+    import {storeToRefs} from "pinia"
 
     export default {
         name: 'Header',
         setup() {
             const router = useRouter()
-            const route = useRoute()
+            // const route = useRoute()
             const store = useContactsStore()
-            const nameHeader = ref()
-
+            const {currentContact} = storeToRefs(store)
+            const nameHeader = ref(currentContact)
 
 
             const goBack = () => {
                 router.go(-1)
+                nameHeader.value = ''
             }
 
             return {goBack, nameHeader}

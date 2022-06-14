@@ -3,7 +3,7 @@
         <div class="info__avatar"></div>
         <div class="info__content">
             <div class="info__name">
-                <span>123{{phoneContact}}</span>
+                <span>{{phoneContact.phone}}</span>
             </div>
             <div class="info__tools">
                 <button class="start-call">Call</button>
@@ -18,21 +18,16 @@
     import {useContactsStore} from '@/store/contacts'
     import {useRouter, useRoute} from 'vue-router';
     import {ref, watch} from "vue";
+    import {storeToRefs} from "pinia";
+
     export default {
-         setup(){
-             const route = useRoute()
-             const store = useContactsStore()
-             const phoneContact = ref()
+        setup() {
+            const store = useContactsStore()
+            const {currentContact} = storeToRefs(store)
+            const phoneContact = ref(currentContact)
 
 
-             watch(route, () => {
-                 phoneContact.value = store.currentContact.phone
-                 console.log(phoneContact.value)
-                 // if (Object.keys(route.query).length === 0) {
-                 //     phoneContact.value = ''
-                 // }
-             })
-             return {phoneContact}
+            return {phoneContact}
         }
 
     }

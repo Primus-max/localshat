@@ -1,11 +1,11 @@
 <template>
     <div class="v-main-wrapper">
-        <Suspense>
+
         <main-header />
-        </Suspense>
-        <Suspense>
+
+
         <router-view></router-view>
-        </Suspense>
+
         <bottom-nav />
     </div>
 </template>
@@ -17,7 +17,6 @@
     export default {
         name: 'MainWrapper',
         components:{MainHeader, BottomNav},
-        props:{}
 
     }
 </script>
