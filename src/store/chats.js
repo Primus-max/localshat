@@ -4,6 +4,7 @@ import axios from "axios";
 
 export const useChatsStore = defineStore('chats', () => {
     const chats = ref([])
+    const chat = reactive({})
 
 
     // Получаю список чатов с сервера
@@ -15,5 +16,7 @@ export const useChatsStore = defineStore('chats', () => {
             console.log('Произошла ошибка', e)
         }
     }
-    return {chats, fetchChats}
+
+
+    return {chats, chat, fetchChats}
 })

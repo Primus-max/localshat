@@ -1,8 +1,12 @@
 <template>
     <div class="v-user-chat">
         <Message
+                v-for="message in chat.chat"
+                :key="message.id"
+                :message="message"
+        >
 
-        />
+        </Message>
 
         <div class="input__field">
             <input
@@ -23,19 +27,34 @@
 <script>
     import Message from "./Message"
     import {ref} from "vue"
+    import {useChatsStore} from "@/store/chats";
+    import {storeToRefs} from "pinia";
 
     export default {
         name: 'UserChat',
         components: {Message},
-        setup:()=>{
+        props: {
+            message: {
+                type: Object,
+                default: () => {
+                }
+            }
+        },
+
+        setup:(props)=>{
+            const {chat} = storeToRefs(useChatsStore())
             const textValue = ref('')
 
-            const sendMessage = ()=> {
 
+            const sendMessage = ()=> {
+                console.log(message)
+                let newChat = {
+
+                }
             }
 
 
-            return {textValue, sendMessage}
+            return {textValue, sendMessage, chat}
         }
     }
 </script>

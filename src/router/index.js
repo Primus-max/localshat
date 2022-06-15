@@ -1,11 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import ContactList from "@/components/contacts/ContactList";
-import ContactUser from "@/components/contacts/ContactUser";
 import ContactUserInfo from "@/components/contacts/ContactUserInfo";
 import UserList from "@/components/users/UserList";
-import UserChat from "@/components/users/chat/UserChat"
-
-
+import UserChat from "@/components/users/chat/UserChat";
 
 const routes = [
   {

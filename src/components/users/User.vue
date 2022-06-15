@@ -11,22 +11,28 @@
 
 <script>
     import {useRouter} from "vue-router"
+    import {useChatsStore} from "@/store/chats";
+    import {storeToRefs} from "pinia";
+
     export default {
         name: 'User',
         props: {
             chat: {
                 type: Object,
-                default: () => {}
+                default: () => {
+                }
             }
         },
-        setup:(props)=>{
+        setup: (props) => {
             const router = useRouter()
+            const {chat} = storeToRefs(useChatsStore())
 
-           const toUserChat = ()=>{
+
+            const toUserChat = () => {
                 router.push({
                     name: 'chat',
-                    params: {'messages': props.chat.chat, 'user': props.chat}
                 })
+                chat.value = props.chat
             }
 
 

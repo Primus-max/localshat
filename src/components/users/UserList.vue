@@ -10,23 +10,29 @@
 
 <script>
     import User from "@/components/users/User"
-    import {useChatsStore} from '@/store/chats'
+    import {useChatsStore} from "@/store/chats"
     import {storeToRefs} from "pinia"
 
     export default {
         name: 'UserList',
         components: {User},
-        setup: () => {
+        props:{
+          chat: {
+              type: Object,
+              default: ()=>{}
+          }
+        },
+        setup: (props) => {
             const store = useChatsStore()
             const {chats} = storeToRefs(store)
             const {fetchChats} = useChatsStore()
 
-            console.log(chats.value)
+
+
 
             fetchChats()
             return {chats}
         }
-
     }
 </script>
 
